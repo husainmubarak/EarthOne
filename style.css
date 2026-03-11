@@ -1,0 +1,417 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: #fff;
+}
+
+body {
+    background: radial-gradient(ellipse at 50% 70%, #0a1a3a 0%, #05080f 100%);
+}
+
+#globe-canvas {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    cursor: grab;
+}
+
+#globe-canvas:active {
+    cursor: grabbing;
+}
+
+/* ══ GLASSMORPHISM ══ */
+.glass-btn {
+    background: rgba(255, 255, 255, .10);
+    border: 1px solid rgba(255, 255, 255, .25);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    color: #fff;
+    padding: 10px 26px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 15px;
+    font-family: inherit;
+    transition: background .25s, transform .2s, box-shadow .25s;
+    white-space: nowrap;
+    line-height: 1;
+    pointer-events: auto;
+}
+
+.glass-btn:hover {
+    background: rgba(255, 255, 255, .22);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, .45);
+}
+
+.glass-btn.primary {
+    font-size: 18px;
+    padding: 15px 48px;
+    background: rgba(255, 255, 255, .15);
+    border-color: rgba(255, 255, 255, .40);
+}
+
+.glass-btn.primary:hover {
+    background: rgba(255, 255, 255, .28);
+}
+
+.glass-btn.sm {
+    font-size: 13px;
+    padding: 8px 16px;
+}
+
+/* ══ HEADER ══ */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 40px;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 800;
+    cursor: pointer;
+    user-select: none;
+    pointer-events: auto;
+}
+
+.nav-bar {
+    display: flex;
+    gap: 12px;
+}
+
+/* ══ SISTEM HALAMAN ══ */
+.page {
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity .45s ease;
+}
+
+.page.active {
+    opacity: 1;
+}
+
+/* ══ HOME ══ */
+#page-home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 130px;
+    text-align: center;
+}
+
+.home-title {
+    font-size: clamp(40px, 8vw, 80px);
+    font-weight: 800;
+    line-height: 1.05;
+    margin-bottom: 18px;
+    background: linear-gradient(135deg, #ffffff 40%, #7ab8ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.home-rule {
+    width: 200px;
+    height: 1px;
+    background: rgba(255, 255, 255, .35);
+    margin-bottom: 18px;
+}
+
+.home-sub {
+    font-size: clamp(14px, 2vw, 17px);
+    color: rgba(255, 255, 255, .65);
+    line-height: 1.6;
+    margin-bottom: 40px;
+    max-width: 460px;
+}
+
+/* ══ TENTANG KAMI ══ */
+#page-about {
+    display: flex;
+    align-items: center;
+    padding: 90px 60px 60px;
+    gap: 40px;
+}
+
+.about-left {
+    flex: 1;
+    max-width: 480px;
+}
+
+.about-right {
+    flex: 1;
+}
+
+.section-title {
+    font-size: clamp(30px, 5vw, 52px);
+    font-weight: 800;
+    margin-bottom: 16px;
+}
+
+.section-rule {
+    height: 1px;
+    background: rgba(255, 255, 255, .25);
+    margin-bottom: 20px;
+}
+
+.section-text {
+    font-size: 15px;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, .72);
+    margin-bottom: 32px;
+}
+
+/* ══ HUBUNGI KAMI ══ */
+#page-contact {
+    display: flex;
+    align-items: center;
+    padding: 90px 60px 60px;
+    gap: 40px;
+}
+
+.contact-left {
+    flex: 1;
+}
+
+.contact-right {
+    flex: 1;
+    max-width: 420px;
+}
+
+.contact-title {
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.contact-card {
+    padding: 13px 22px;
+    border-radius: 50px;
+    background: rgba(255, 255, 255, .09);
+    border: 1px solid rgba(255, 255, 255, .18);
+    backdrop-filter: blur(10px);
+    font-size: 15px;
+}
+
+/* ══ PILIH BENUA ══ */
+#page-continent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding-bottom: 75px;
+    gap: 20px;
+}
+
+.select-label {
+    font-size: clamp(17px, 3vw, 23px);
+    font-weight: 600;
+    padding: 12px 32px;
+    background: rgba(0, 0, 0, .45);
+    backdrop-filter: blur(18px);
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, .15);
+}
+
+.continent-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    max-width: 520px;
+}
+
+/* ══ DAFTAR NEGARA ══ */
+#page-country-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 100px 60px 70px;
+    gap: 14px;
+    max-width: 580px;
+}
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.breadcrumb-sep {
+    color: rgba(255, 255, 255, .35);
+    font-size: 14px;
+}
+
+.breadcrumb-text {
+    color: rgba(255, 255, 255, .55);
+    font-size: 14px;
+}
+
+.continent-name {
+    font-size: clamp(26px, 5vw, 44px);
+    font-weight: 800;
+    line-height: 1;
+}
+
+.continent-desc {
+    font-size: 14px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, .68);
+    max-width: 460px;
+}
+
+.country-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+/* ══ DETAIL NEGARA ══ */
+#page-country-detail {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 90px 60px 60px;
+    gap: 14px;
+    max-width: 540px;
+}
+
+.country-name {
+    font-size: clamp(26px, 5vw, 44px);
+    font-weight: 800;
+    line-height: 1.1;
+}
+
+.country-desc {
+    font-size: 14px;
+    line-height: 1.75;
+    color: rgba(255, 255, 255, .72);
+}
+
+.country-divider {
+    height: 1px;
+    background: rgba(255, 255, 255, .2);
+}
+
+.info-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.info-row {
+    display: flex;
+    gap: 10px;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.info-label {
+    width: 115px;
+    color: rgba(255, 255, 255, .55);
+    flex-shrink: 0;
+}
+
+.info-sep {
+    color: rgba(255, 255, 255, .4);
+}
+
+.info-value {
+    color: #fff;
+    font-weight: 500;
+}
+
+/* ══ RESPONSIVE ══ */
+@media (max-width: 768px) {
+    header {
+        padding: 14px 18px;
+    }
+
+    .logo {
+        font-size: 18px;
+    }
+
+    .glass-btn {
+        font-size: 13px;
+        padding: 9px 18px;
+    }
+
+    .glass-btn.primary {
+        font-size: 15px;
+        padding: 13px 36px;
+    }
+
+    #page-about {
+        flex-direction: column;
+        padding: 90px 24px 40px;
+    }
+
+    .about-right {
+        display: none;
+    }
+
+    #page-contact {
+        flex-direction: column;
+        padding: 90px 24px 40px;
+    }
+
+    .contact-left {
+        display: none;
+    }
+
+    .contact-right {
+        max-width: 100%;
+    }
+
+    #page-country-list {
+        padding: 90px 24px 60px;
+        max-width: 100%;
+    }
+
+    #page-country-detail {
+        padding: 90px 24px 60px;
+        max-width: 100%;
+    }
+
+    #page-continent {
+        padding-bottom: 55px;
+    }
+}
+
+@media (max-width: 480px) {
+    .continent-grid {
+        max-width: 340px;
+    }
+}

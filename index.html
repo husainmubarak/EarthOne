@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EarthOne — Click and Explore</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <canvas id="globe-canvas"></canvas>
+
+  <header>
+    <div class="logo" onclick="navigate('home')">EarthOne</div>
+    <nav class="nav-bar">
+      <button class="glass-btn" onclick="navigate('about')">Tentang Kami</button>
+      <button class="glass-btn" onclick="navigate('contact')">Hubungi Kami</button>
+    </nav>
+  </header>
+
+  <div class="page active" id="page-home">
+    <h1 class="home-title">Click and Explore</h1>
+    <div class="home-rule"></div>
+    <p class="home-sub">Pelajari berbagai negara yang ada di dunia<br>dengan mudah tanpa ribet</p>
+    <button class="glass-btn primary" onclick="navigate('continent')">Mulai Menjelajah</button>
+  </div>
+
+  <div class="page" id="page-about">
+    <div class="about-left">
+      <div class="section-title">EarthOne</div>
+      <div class="section-rule"></div>
+      <p class="section-text">
+        EarthOne adalah platform pembelajaran interaktif yang dirancang khusus untuk membantu siswa sekolah dasar
+        mengenal berbagai negara di dunia. Dengan tampilan bumi 3D yang interaktif, belajar geografi menjadi lebih
+        menyenangkan dan mudah dipahami.
+        <br><br>
+        Kami percaya bahwa pendidikan yang baik dimulai dari rasa ingin tahu. EarthOne hadir untuk memantik rasa
+        penasaran anak-anak tentang dunia yang luas ini — setiap klik adalah petualangan baru yang penuh pengetahuan.
+      </p>
+      <button class="glass-btn primary" onclick="navigate('continent')">Mulai Menjelajah</button>
+    </div>
+    <div class="about-right"></div>
+  </div>
+
+  <div class="page" id="page-contact">
+    <div class="contact-left"></div>
+    <div class="contact-right">
+      <div class="contact-title">📷 Kontak Kami</div>
+      <div class="contact-list">
+        <div class="contact-card">Husain &nbsp;: @husnn_m</div>
+        <div class="contact-card">Erge &nbsp;&nbsp;&nbsp;: @fkh.erge</div>
+        <div class="contact-card">Fathir &nbsp;: @pttirs</div>
+        <div class="contact-card">Ryan &nbsp;&nbsp;&nbsp;: @mhmmdfryan</div>
+        <div class="contact-card">Andi &nbsp;&nbsp;&nbsp;: @aannddii._</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page" id="page-continent">
+    <div class="select-label">Silahkan Pilih Benua</div>
+    <div class="continent-grid" id="continent-grid"></div>
+  </div>
+
+  <div class="page" id="page-country-list">
+    <div class="breadcrumb">
+      <button class="glass-btn sm" onclick="navigate('continent')">← Back</button>
+      <span class="breadcrumb-sep">|</span>
+      <span class="breadcrumb-text" id="cl-breadcrumb"></span>
+    </div>
+    <div class="continent-name" id="cl-name"></div>
+    <div class="continent-desc" id="cl-desc"></div>
+    <div class="country-buttons" id="cl-buttons"></div>
+  </div>
+
+  <div class="page" id="page-country-detail">
+    <div class="breadcrumb">
+      <button class="glass-btn sm" id="cd-back-btn">← Back</button>
+      <span class="breadcrumb-sep">|</span>
+      <span class="breadcrumb-text" id="cd-breadcrumb"></span>
+    </div>
+    <div class="country-name" id="cd-name"></div>
+    <div class="country-desc" id="cd-desc"></div>
+    <div class="country-divider"></div>
+    <div class="info-grid" id="cd-info"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
