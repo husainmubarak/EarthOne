@@ -311,7 +311,9 @@ function navigate(pageId, opts = {}) {
     else if (pageId === 'about') { show('page-about'); moveEarthTo('about'); }
     else if (pageId === 'contact') { show('page-contact'); moveEarthTo('contact'); }
     else if (pageId === 'continent') {
-        buildContinentPage(); show('page-continent'); moveEarthTo('continent');
+        buildContinentPage(); // Selalu bangun ulang untuk menghindari listener lama
+        show('page-continent');
+        moveEarthTo('continent');
     }
     else if (pageId === 'country-list' && opts.continent) {
         currentContinent = opts.continent;

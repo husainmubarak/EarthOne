@@ -403,6 +403,8 @@ header {
     #page-country-detail {
         padding: 90px 24px 60px;
         max-width: 100%;
+        justify-content: flex-end;
+        padding-bottom: 70px;
     }
 
     #page-continent {
