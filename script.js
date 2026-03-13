@@ -365,8 +365,10 @@ function buildCountryListPage(key) {
 function buildCountryDetailPage(ck) {
     const c = COUNTRIES[ck];
     const cont = CONTINENTS[c.continent];
-    document.getElementById('cd-back-btn').onclick =
-        () => navigate('country-list', { continent: c.continent });
+    const backBtn = document.getElementById('cd-back-btn');
+    const newBackBtn = backBtn.cloneNode(true);
+    backBtn.parentNode.replaceChild(newBackBtn, backBtn);
+    newBackBtn.onclick = () => navigate('country-list', { continent: c.continent });
     document.getElementById('cd-breadcrumb').textContent = 'Benua ' + cont.name;
     document.getElementById('cd-name').textContent = c.flag + '  ' + c.name;
     document.getElementById('cd-desc').textContent = c.desc;
