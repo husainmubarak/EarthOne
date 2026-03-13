@@ -47,6 +47,11 @@ body {
     transition: background .25s, transform .2s, box-shadow .25s;
     white-space: nowrap;
     line-height: 1;
+    pointer-events: none;
+}
+
+.page.active .glass-btn,
+header .glass-btn {
     pointer-events: auto;
 }
 
